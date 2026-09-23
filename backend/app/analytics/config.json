@@ -1,0 +1,23 @@
+{
+  "random_seed": 42,
+  "max_depth": 4,
+  "min_transaction_kzt": 5000,
+  "sum_tolerance_kzt": 0.01,
+  "rapid_window_days": 2,
+  "centrality": {"pagerank_alpha": 0.85, "iterations": 300, "tolerance": 1e-10, "betweenness_sample": 256, "hits_epsilon": 1e-12},
+  "clustering": {"min_louvain_size": 12, "resolution": 1.15, "transaction_weight": 0.25},
+  "role_thresholds": {"consolidator_min_in": 3, "distributor_min_out": 3, "fan_saturation": 6, "transit_min_rapid_share": 0.15, "terminal_max_pass_through": 0.10, "coordinator_min_branches": 4, "coordinator_min_seed_groups": 2, "coordinator_min_centrality": 0.60, "peripheral_baseline": 0.24},
+  "role_weights": {
+    "consolidator": {"fan_in": 0.40, "in_volume": 0.20, "aggregation": 0.20, "retention": 0.20},
+    "transit": {"balance": 0.30, "rapid": 0.40, "low_retention": 0.15, "two_sided": 0.15},
+    "distributor": {"fan_out": 0.55, "out_volume": 0.20, "dispersion": 0.15, "hub": 0.10},
+    "terminal": {"retention": 0.55, "in_volume": 0.25, "narrow_in": 0.20},
+    "coordinator": {"centrality": 0.40, "bridge": 0.25, "seed_links": 0.20, "branching": 0.15}
+  },
+  "role_tie_order": ["consolidator", "transit", "distributor", "terminal", "coordinator", "peripheral"],
+  "role_confidence": {"base_strength": 0.60, "margin_weight": 0.40},
+  "priority_weights": {"role": 0.20, "seed_links": 0.16, "centrality": 0.14, "turnover": 0.12, "branching": 0.10, "bridge": 0.10, "cycles": 0.06, "temporal": 0.06, "quality": 0.06},
+  "priority_role_values": {"consolidator": 0.90, "transit": 0.85, "distributor": 0.85, "terminal": 0.65, "coordinator": 1.0, "peripheral": 0.10},
+  "observation_quality": {"seed_factor": 0.90, "boundary_factor": 0.70, "sparse_factor": 0.65, "isolated_factor": 0.35, "sparse_tx_threshold": 3},
+  "exports": {"top_count": 100, "float_decimals": 8}
+}
